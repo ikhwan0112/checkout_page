@@ -25,6 +25,7 @@ class SummaryPayment extends StatelessWidget {
               value: 'RM75.00',
               valueColor: Color(0xFF828282),
               valueFontSize: 16,
+              bold: false,
             ),
             SizedBox(
               height: size.height / 50,
@@ -36,17 +37,19 @@ class SummaryPayment extends StatelessWidget {
               value: 'RM4.66',
               valueColor: Color(0xFF828282),
               valueFontSize: 16,
+              bold: false,
             ),
             SizedBox(
               height: size.height / 50,
             ),
             CheckoutSummary(
-              title: 'Shipping Fee',
+              title: 'Order Discount',
               titleColor: Color(0xFF5A5A5A),
               titleFontSize: 16,
               value: '-RM4.66',
               valueColor: Color(0xFFA63838),
               valueFontSize: 16,
+              bold: false,
             ),
             SizedBox(
               height: size.height / 50,
@@ -58,6 +61,7 @@ class SummaryPayment extends StatelessWidget {
               value: 'RM75.00',
               valueColor: Color(0xFF928069),
               valueFontSize: 20,
+              bold: true,
             ),
           ],
         ),

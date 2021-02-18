@@ -68,7 +68,8 @@ class ProductInfo extends StatelessWidget {
                             Text(
                               'RM25.00',
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 17),
+                                fontSize: 17,
+                              ),
                             ),
                             Spacer(),
                             Text('Qty: 3'),

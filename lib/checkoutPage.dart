@@ -246,6 +246,68 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
+  Widget bottomBar(Size size) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(
+        size.width / 13,
+        size.height / 50,
+        size.width / 13,
+        size.height / 70,
+      ),
+      color: Colors.white,
+      height: size.height / 9,
+      width: size.width,
+      child: Row(
+        children: [
+          // Total Payment (Start)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  'Total Payment:',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF828282),
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+              Text(
+                'RM75.00',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF928069),
+                ),
+              ),
+            ],
+          ),
+          // Total Payment (End)
+          Spacer(),
+          // Button Place Order (Start)
+          ButtonTheme(
+            minWidth: size.width * 0.29,
+            height: size.height * 0.05,
+            child: RaisedButton(
+              child: Text(
+                'Place Order',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                ),
+              ),
+              color: Color(0xFF928069),
+              onPressed: () {},
+            ),
+          ),
+          // Button Place Order (End)
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -260,69 +322,79 @@ class _CheckoutPageState extends State<CheckoutPage> {
         centerTitle: true,
       ),
       backgroundColor: Color(0xFFEEEEF0),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(
-            size.width / 15,
-            size.height / 40,
-            size.width / 15,
-            size.height / 20,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    'Delivery Address',
-                    style: TextStyle(fontSize: 21),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              physics: AlwaysScrollableScrollPhysics(),
+              shrinkWrap: true,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    size.width / 15,
+                    size.height / 40,
+                    size.width / 15,
+                    size.height / 50,
                   ),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      'Edit',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFF928069),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Delivery Address',
+                            style: TextStyle(fontSize: 21),
+                          ),
+                          Spacer(),
+                          InkWell(
+                            onTap: () {},
+                            child: Text(
+                              'Edit',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Color(0xFF928069),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                      SizedBox(
+                        height: size.height / 100,
+                      ),
+                      cardDeliveryAddress(size),
+                      SizedBox(
+                        height: size.height / 60,
+                      ),
+                      Text(
+                        'Delivery Option',
+                        style: TextStyle(fontSize: 21),
+                      ),
+                      cardDeliveryOption(size),
+                      SizedBox(
+                        height: size.height / 60,
+                      ),
+                      ProductInfo(),
+                      SizedBox(
+                        height: size.height / 60,
+                      ),
+                      Text(
+                        'Payment Method',
+                        style: TextStyle(fontSize: 21),
+                      ),
+                      cardPaymentMethod(size),
+                      SizedBox(
+                        height: size.height / 60,
+                      ),
+                      SummaryPayment(),
+                    ],
                   ),
-                ],
-              ),
-              SizedBox(
-                height: size.height / 100,
-              ),
-              cardDeliveryAddress(size),
-              SizedBox(
-                height: size.height / 60,
-              ),
-              Text(
-                'Delivery Option',
-                style: TextStyle(fontSize: 21),
-              ),
-              cardDeliveryOption(size),
-              SizedBox(
-                height: size.height / 60,
-              ),
-              ProductInfo(),
-              SizedBox(
-                height: size.height / 60,
-              ),
-              Text(
-                'Payment Method',
-                style: TextStyle(fontSize: 21),
-              ),
-              cardPaymentMethod(size),
-              SizedBox(
-                height: size.height / 60,
-              ),
-              SummaryPayment(),
-            ],
+                ),
+              ],
+            ),
           ),
-        ),
+          bottomBar(size),
+        ],
       ),
     );
   }
 }
-
